@@ -17,29 +17,36 @@ public class PlayerController : MonoBehaviour
      public GameObject shot;
      public Transform shotSpawn;
      public float fireRate;
-
+     public float fireRate2;
      private float nextFire;
 
      public AudioSource musicSource;
      public AudioClip mucisClipOne;
+     public AudioClip mucisClipTwo;
      void Update ()
      {
-         if (Input.GetButton("Fire1") && Time.time > nextFire)
-         {
+          if (Input.GetButton("Fire1") && Time.time > nextFire)
+          {
              nextFire = Time.time + fireRate;
              GameObject clone = Instantiate (shot, shotSpawn.position, shotSpawn.rotation) as GameObject;
              musicSource.clip = mucisClipOne;
              musicSource.Play();
-         }
+          }     
      }
-
+     void OnTriggerEnter(Collider other)
+     {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+           other.gameObject.SetActive(false);
+           fireRate = fireRate2;
+        }
+     }
      private Rigidbody rb;
 
      private void Start()
      {
           rb = GetComponent<Rigidbody>();
      }
-
      void FixedUpdate()
      {
           float moveHorizontal = Input.GetAxis("Horizontal");

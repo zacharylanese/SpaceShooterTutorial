@@ -11,24 +11,34 @@ public class GameController : MonoBehaviour
     public float spawnWait;
     public float startWait;
     public float waveWait;
+    public static bool zPress;
 
     public Text ScoreText;
     public Text restartText;
     public Text gameOverText;
     public Text wintext;
     public Text gamebytext;
+    public Text harderText;
     private bool gameOver;
     private bool restart;
     private int score;
+    public AudioSource musicSource;
+    public AudioClip mucisClipOne;
+    public AudioClip mucisClipTwo;
+    public AudioClip mucisClipThree;
     void Start ()
     {
+        musicSource.clip = mucisClipOne;
+        musicSource.Play();
         gameOver = false;
         restart = false;
         restartText.text = "";
         gameOverText.text = "";
         wintext.text = "";
         gamebytext.text = "";
+        harderText.text = "Press 'Z' for Challenge";
         score = 0;
+        zPress = false;
         UpdateScore();
         StartCoroutine (SpawnWaves());
     }
@@ -45,6 +55,11 @@ public class GameController : MonoBehaviour
         {
             Application.Quit();
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            harderText.text = "";
+            zPress = true;
+        }  
     }
     IEnumerator SpawnWaves ()
     {
@@ -82,6 +97,8 @@ public class GameController : MonoBehaviour
             gamebytext.text = "Game Created By Zachary Lanese";
             gameOver = true;
             restart = true;
+            musicSource.clip = mucisClipTwo;
+            musicSource.Play();
         }
     }
     public void GameOver ()
@@ -89,5 +106,7 @@ public class GameController : MonoBehaviour
         gameOverText.text = "Game Over!";
         gamebytext.text = "Game Created By Zachary Lanese";
         gameOver = true;
+        musicSource.clip = mucisClipThree;
+        musicSource.Play();
     }
 }
