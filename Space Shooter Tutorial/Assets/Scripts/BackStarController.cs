@@ -17,7 +17,7 @@ public class BackStarController : MonoBehaviour
         transform.position = startPosition + Vector3.forward * newPosition;
         if (GameController.winState == true)
         {
-            scrollSpeed = -15;
+            scrollSpeed = -20;
         } 
     }
 }

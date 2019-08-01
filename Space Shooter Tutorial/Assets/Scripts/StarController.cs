@@ -17,7 +17,7 @@ public class StarController : MonoBehaviour
         transform.position = startPosition + Vector3.forward * newPosition;
         if (GameController.winState == true)
         {
-            scrollSpeed = -10;
+            scrollSpeed = -30;
         } 
     }
 }
