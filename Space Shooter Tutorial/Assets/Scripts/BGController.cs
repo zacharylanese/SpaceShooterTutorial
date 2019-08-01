@@ -17,7 +17,7 @@ public class BGController : MonoBehaviour
         transform.position = startPosition + Vector3.forward * newPosition;
         if (GameController.winState == true)
         {
-            scrollSpeed = -50;
+            scrollSpeed = -30;
         } 
     }
 }

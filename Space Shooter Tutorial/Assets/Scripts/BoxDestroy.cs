@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyOnContact : MonoBehaviour
+public class BoxDestroy : MonoBehaviour
 {
     public GameObject explosion;
-    public GameObject playerExplosion;
     public int scoreValue;
     private GameController gameController;
     void Start ()
@@ -27,24 +26,5 @@ public class DestroyOnContact : MonoBehaviour
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag ("Boundary") || other.CompareTag ("Enemy"))
-        {
-            return;
-        }
-        if (explosion != null)
-        {
-            Instantiate(explosion, transform.position, transform.rotation);
-        }
-        if (other.tag == "Player")
-        {
-            Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-            gameController.GameOver ();
-        }
-        gameController.AddScore (scoreValue);
-        Destroy(other.gameObject);
-        Destroy(gameObject);
     }
 }
