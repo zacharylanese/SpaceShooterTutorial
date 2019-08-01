@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public float startWait;
     public float waveWait;
     public static bool zPress;
+    public static bool winState;
 
     public Text ScoreText;
     public Text restartText;
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
         harderText.text = "Press 'Z' for Challenge";
         score = 0;
         zPress = false;
+        winState = false;
         UpdateScore();
         StartCoroutine (SpawnWaves());
     }
@@ -97,6 +99,7 @@ public class GameController : MonoBehaviour
             gamebytext.text = "Game Created By Zachary Lanese";
             gameOver = true;
             restart = true;
+            winState = true;
             musicSource.clip = mucisClipTwo;
             musicSource.Play();
         }

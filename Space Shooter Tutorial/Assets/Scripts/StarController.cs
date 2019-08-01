@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BGController : MonoBehaviour
+public class StarController : MonoBehaviour
 {
     public float scrollSpeed;
     public float tileSizeZ;
@@ -17,7 +17,7 @@ public class BGController : MonoBehaviour
         transform.position = startPosition + Vector3.forward * newPosition;
         if (GameController.winState == true)
         {
-            scrollSpeed = -50;
+            scrollSpeed = -20;
         } 
     }
 }

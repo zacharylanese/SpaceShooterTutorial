@@ -11,12 +11,9 @@ public class EnemyMover : MonoBehaviour
      {
           rb = GetComponent<Rigidbody>();
           rb.velocity = transform.forward * speed;
-     }
-     void Update()
-     {
-          if (GameController.zPress == true)
+          if (GameController.zPress) 
           {
-               speed = -10;
+               rb.velocity = transform.forward*(speed-5);
           }
      }
 }
